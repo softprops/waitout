@@ -1,6 +1,5 @@
 use std::sync::{Condvar, Mutex};
 
-#[derive(Clone)]
 pub struct WaitGroup {
     cvar: Condvar,
     count: Mutex<usize>
@@ -17,11 +16,13 @@ impl WaitGroup {
     pub fn add(&self, n: usize) {
         let mut count = self.count.lock().unwrap();
         *count += n;
+        self.cvar.notify_one();
     }
 
     pub fn done(&self) {
         let mut count = self.count.lock().unwrap();
         *count -= 1;
+        self.cvar.notify_one();
     }
 
     pub fn wait(&self) {

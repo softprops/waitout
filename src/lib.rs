@@ -1,11 +1,13 @@
 use std::sync::{Condvar, Mutex};
 
+/// A simple iterface to await the completion of multiple async tasks
 pub struct WaitGroup {
     cvar: Condvar,
     count: Mutex<usize>
 }
 
 impl WaitGroup {
+    /// creates a new wait group instance
     pub fn new() -> WaitGroup {
         WaitGroup {
             cvar: Condvar::new(),
@@ -13,18 +15,21 @@ impl WaitGroup {
         }
     }
 
+    /// adds `n` to internal counter
     pub fn add(&self, n: usize) {
         let mut count = self.count.lock().unwrap();
         *count += n;
         self.cvar.notify_one();
     }
 
+    /// subtracts 1 from internal counter
     pub fn done(&self) {
         let mut count = self.count.lock().unwrap();
         *count -= 1;
         self.cvar.notify_one();
     }
 
+    /// blocks the current thread until wait group is complete
     pub fn wait(&self) {
         let mut count = self.count.lock().unwrap();
         while *count > 0 {

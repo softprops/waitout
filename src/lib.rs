@@ -18,7 +18,7 @@ impl WaitGroup {
         }
     }
 
-    /// adds `n` to internal counter
+    /// adds `delta` to internal counter
     pub fn add(&self, delta: usize) {
         let mut count = self.count.lock().unwrap();
         *count += delta;

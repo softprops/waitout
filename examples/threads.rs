@@ -1,6 +1,8 @@
 extern crate waitgroup;
+
 use std::sync::Arc;
 use std::thread;
+
 fn main() {
     let wg = Arc::new(waitgroup::WaitGroup::new());
     for _ in 0..100 {

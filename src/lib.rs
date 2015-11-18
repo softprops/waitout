@@ -1,6 +1,9 @@
+//! waitgroup provides an interface for awaiting the completion of multiple asynchronous tasks
+
 use std::sync::{Condvar, Mutex};
 
-/// A simple iterface to await the completion of multiple async tasks
+/// A waitgroup waits for a collection of tasks to complete
+/// It keeps track of tasks via shared counter
 pub struct WaitGroup {
     cvar: Condvar,
     count: Mutex<usize>
@@ -16,9 +19,9 @@ impl WaitGroup {
     }
 
     /// adds `n` to internal counter
-    pub fn add(&self, n: usize) {
+    pub fn add(&self, delta: usize) {
         let mut count = self.count.lock().unwrap();
-        *count += n;
+        *count += delta;
         self.cvar.notify_one();
     }
 
@@ -33,7 +36,7 @@ impl WaitGroup {
     pub fn wait(&self) {
         let mut count = self.count.lock().unwrap();
         while *count > 0 {
-            count = self.cvar.wait(count).unwrap()
+            count = self.cvar.wait(count).unwrap();
         }
     }
 }

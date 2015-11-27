@@ -6,7 +6,7 @@ use std::sync::{Condvar, Mutex};
 /// It keeps track of tasks via shared counter
 pub struct WaitGroup {
     cvar: Condvar,
-    count: Mutex<usize>
+    count: Mutex<usize>,
 }
 
 impl Default for WaitGroup {
@@ -20,7 +20,7 @@ impl WaitGroup {
     pub fn new(n: usize) -> WaitGroup {
         WaitGroup {
             cvar: Condvar::new(),
-            count: Mutex::new(n)
+            count: Mutex::new(n),
         }
     }
 
@@ -48,5 +48,4 @@ impl WaitGroup {
 }
 
 #[test]
-fn it_works() {
-}
+fn it_works() {}

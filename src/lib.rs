@@ -9,12 +9,18 @@ pub struct WaitGroup {
     count: Mutex<usize>
 }
 
+impl Default for WaitGroup {
+    fn default() -> WaitGroup {
+        WaitGroup::new(0)
+    }
+}
+
 impl WaitGroup {
     /// creates a new wait group instance
-    pub fn new() -> WaitGroup {
+    pub fn new(n: usize) -> WaitGroup {
         WaitGroup {
             cvar: Condvar::new(),
-            count: Mutex::new(0)
+            count: Mutex::new(n)
         }
     }
 

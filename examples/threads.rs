@@ -1,10 +1,11 @@
-extern crate waitgroup;
+extern crate waitout;
 
+use waitout::WaitGroup;
 use std::sync::Arc;
 use std::thread;
 
 fn main() {
-    let wg = Arc::new(waitgroup::WaitGroup::new());
+    let wg = Arc::new(WaitGroup::new(0));
     for _ in 0..100 {
         wg.add(1);
         let wg2 = wg.clone();

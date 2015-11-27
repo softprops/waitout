@@ -2,3 +2,9 @@
 name = "waitout"
 version = "0.1.0"
 authors = ["softprops <d.tangren@gmail.com>"]
+description = "Awaits the completion of multiple async tasks"
+documentation = "http://softprops.github.io/waitout"
+homepage = "https://github.com/softprops/waitout"
+repository = "https://github.com/softprops/waitout"
+keywords = ["waitgroup", "countdownlatch", "async", "thread"]
+license = "MIT"

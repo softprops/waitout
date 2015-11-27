@@ -21,7 +21,9 @@ use std::thread;
 use waitout::WaitGroup;
 
 fn main() {
-    let wg = Arc::new(WaitGroup::new(0));
+    let wg = Arc::new(
+        WaitGroup::new(0)
+    );
     for _ in 0..100 {
         wg.add(1);
         let wg2 = wg.clone();

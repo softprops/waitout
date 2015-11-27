@@ -9,6 +9,15 @@ asynchounous tasks.
 
 Find them [here](https://softprops.github.io/waitout).
 
+## install
+
+Add the following to you're `Cargo.toml` file
+
+```toml
+[dependencies]
+waitout = "0.1"
+```
+
 ## usage
 
 It's sometimes useful fan out independant tasks asynchronously for efficient completion of

@@ -2,7 +2,7 @@
 
 use std::sync::{Condvar, Mutex};
 
-/// A waitgroup waits for a collection of tasks to complete
+/// A waitgroup waits for a collection of tasks to complete.
 /// It keeps track of tasks via shared counter
 pub struct WaitGroup {
     cvar: Condvar,

@@ -1,7 +1,13 @@
 # waitout
 
+[![Build Status](https://travis-ci.org/softprops/waitout.svg?branch=master)](https://travis-ci.org/softprops/waitout)
+
 Waitout provides a simple interface for tracking and awaiting the completion of multiple
 asynchounous tasks.
+
+## api docs
+
+Find them [here](https://softprops.github.io/waitout).
 
 ## usage
 

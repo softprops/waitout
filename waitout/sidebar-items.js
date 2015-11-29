@@ -1,0 +1,1 @@
+initSidebarItems({"struct":[["WaitGroup","A waitgroup waits for a collection of tasks to complete. It keeps track of tasks via shared counter"]]});

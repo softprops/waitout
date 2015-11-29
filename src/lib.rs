@@ -28,14 +28,14 @@ impl WaitGroup {
     pub fn add(&self, delta: usize) {
         let mut count = self.count.lock().unwrap();
         *count += delta;
-        self.cvar.notify_one();
+        self.cvar.notify_all();
     }
 
     /// subtracts 1 from internal counter
     pub fn done(&self) {
         let mut count = self.count.lock().unwrap();
         *count -= 1;
-        self.cvar.notify_one();
+        self.cvar.notify_all();
     }
 
     /// blocks the current thread until wait group is complete
